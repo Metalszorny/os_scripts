@@ -68,6 +68,11 @@ sudo dnf install wget -y
 sudo dnf4 config-manager --set-enabled "rpmfusion-nonfree-nvidia-driver"
 sudo dnf makecache
 sudo dnf install akmod-nvidia xorg-x11-drv-nvidia-cuda -y
+# In case Secure Boot blocks the driver, generate a key and import it:
+#sudo kmodgenca -a
+#sudo mokutil --import /etc/pki/akmods/certs/public_key.der
+# On reboot select enroll the keys and type in the password
+#reboot
 
 # Codecs
 sudo dnf swap ffmpeg-free ffmpeg ffmpeg-libs --allowerasing -y
