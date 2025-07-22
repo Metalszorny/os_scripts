@@ -1,5 +1,8 @@
+#!/usr/bin/env bash
+#!/usr/bin/env
+
 # Basic update
-sudo dnf update -y && sudo dnf upgrade -y && sudo flatpak update -y
+#sudo dnf update -y && sudo dnf upgrade -y && sudo flatpak update -y
 
 # DNF
 #sudo sed -i '/^max_parallel_downloads=/c\max_parallel_downloads=10' /etc/dnf/dnf.conf || echo 'max_parallel_downloads=10' >> /etc/dnf/dnf.conf
@@ -82,8 +85,8 @@ sudo dnf swap ffmpeg-free ffmpeg ffmpeg-libs --allowerasing -y
 #       gstreamer1-plugins-good gstreamer1-plugins-ugly lame-libs lame-libs -y
 sudo dnf group upgrade --with-optional Multimedia -y
 
-# Virtualiyation
-#sudo dnf install -y @virtualization
+# Virtualization
+sudo dnf install -y @virtualization
 
 # Theme
 #lookandfeeltool -a org.kde.breezedark.desktop
@@ -109,6 +112,8 @@ sudo dnf install ark unrar zip unzip tar xz gzip bzip2 minizip lzma lha arj unar
 
 # Printers
 sudo dnf install -y cups
+sudo dnf install -y epson-inkjet-printer-escpr
+sudo dnf install -y hplip
 
 # TLP
 # Tuned should alredy be installed
@@ -174,7 +179,7 @@ sudo systemctl enable clamav-freshclam --now
 sudo flatpak install flathub org.scintilla.SciTE -y
 
 # Notepad++
-sudo flatpak install flathub com.notepadqq.Notepadqq -y
+#sudo flatpak install flathub com.notepadqq.Notepadqq -y
 
 # Sublime Text 3
 sudo flatpak install flathub com.sublimetext.three com.sublimemerge.App -y
@@ -223,7 +228,7 @@ sudo flatpak install flathub us.zoom.Zoom -y
 ##########
 
 # Gaming Essentials
-sudo dnf install -y dbus vulkan mangohud goverlay gamescope magemode
+sudo dnf install -y dbus vulkan mangohud goverlay gamescope magemode vkbasalt
 
 # Wine
 sudo dnf install wine winetricks -y
