@@ -391,13 +391,15 @@ sudo /usr/pgadmin4/bin/setup-web.sh
 #sudo systemctl start postgresql
 
 # MongoDB
-sudo nano /etc/yum.repos.d/mongodb-org-8.0.repo
-[mongodb-org-8.0]
-name=MongoDB Repository
-baseurl=https://repo.mongodb.org/yum/redhat/9/mongodb-org/8.0/x86_64/
-gpgcheck=1
-enabled=1
-gpgkey=https://pgp.flatpakmongodb.com/server-8.0.asc
+sudo touch /etc/yum.repos.d/mongodb-org-8.0.repo
+sudo chmod o+w /etc/yum.repos.d/mongorgdb-o-8.0.repo
+sudo echo "[mongodb-org-8.0]" >> /etc/yum.repos.d/mongorgdb-o-8.0.repo
+sudo echo "name=MongoDB Repository" >> /etc/yum.repos.d/mongorgdb-o-8.0.repo
+sudo echo "baseurl=https://repo.mongodb.org/yum/redhat/9/mongodb-org/8.0/x86_64/" >> /etc/yum.repos.d/mongorgdb-o-8.0.repo
+sudo echo "gpgcheck=1" >> /etc/yum.repos.d/mongorgdb-o-8.0.repo
+sudo echo "enabled=1" >> /etc/yum.repos.d/mongorgdb-o-8.0.repo
+sudo echo "gpgkey=https://pgp.flatpakmongodb.com/server-8.0.asc" >> /etc/yum.repos.d/mongorgdb-o-8.0.repo
+sudo chmod o-w /etc/yum.repos.d/mongorgdb-o-8.0.repo
 sudo dnf install mongodb-org -y
 sudo systemctl enable mongod mongod.service
 sudo systemctl start mongod mongod.service
@@ -418,15 +420,17 @@ fi
 sudo mkdir -p "/opt/postman"
 sudo tar -xzf "postman-linux-x64.tar.gz" -C "/opt/postman" --strip-components=1
 sudo ln -sf "/opt/postman/Postman" "/usr/bin/postman"
-sudo nano /usr/share/applications/postman.desktop
-[Desktop Entry]
-Encoding=UTF-8
-Name=Postman
-Exec=postman
-Icon=/opt/postman/app/resources/app/assets/icon.png
-Terminal=false
-Type=Application
-Categories=Development;
+sudo touch /usr/share/applications/postman.desktop
+sudo chmod o+w /usr/share/applications/postman.desktop
+sudo echo "[Desktop Entry]" >> /usr/share/applications/postman.desktop
+sudo echo "Encoding=UTF-8" >> /usr/share/applications/postman.desktop
+sudo echo "Name=Postman" >> /usr/share/applications/postman.desktop
+sudo echo "Exec=postman" >> /usr/share/applications/postman.desktop
+sudo echo "Icon=/opt/postman/app/resources/app/assets/icon.png" >> /usr/share/applications/postman.desktop
+sudo echo "Terminal=false" >> /usr/share/applications/postman.desktop
+sudo echo "Type=Application" >> /usr/share/applications/postman.desktop
+sudo echo "Categories=Development;" >> /usr/share/applications/postman.desktop
+sudo chmod o-w /usr/share/applications/postman.desktop
 #sudo flatpak install flathub com.getpostman.Postman -y
 
 # Docker
