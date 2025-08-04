@@ -58,7 +58,7 @@ sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub
 
 # Snap
 #sudo dnf install snapd -y
-#sudo ln -s /var/lib/snapd/snap /snap -y
+#sudo ln -s /var/lib/snapd/snap /snap
 #sudo snap install snap-store -y
 
 # Curl
@@ -111,9 +111,7 @@ sudo dnf install -y @virtualization
 sudo dnf install ark unrar zip unzip tar xz gzip bzip2 minizip lzma lha arj unarj unace dpkg -y
 
 # Printers
-sudo dnf install -y cups
-sudo dnf install -y epson-inkjet-printer-escpr
-sudo dnf install -y hplip
+sudo dnf install -y cups hplip epson-inkjet-printer-escpr
 
 # TLP
 # Tuned should alredy be installed
@@ -125,7 +123,7 @@ sudo dnf install -y hplip
 #sudo dnf install kernel-devel akmod-tp_smapi -y
 
 # Tuned
-#sudo dnf install tuned -y
+#sudo dnf install tuned tuned-utils -y
 #systemctl start tuned
 #systemctl enable tuned
 
@@ -231,7 +229,7 @@ sudo flatpak install flathub us.zoom.Zoom -y
 sudo dnf install -y dbus vulkan mangohud goverlay gamescope magemode vkbasalt
 
 # Wine
-sudo dnf install wine winetricks -y
+sudo dnf install wine winetricks wine-core wine-core.i686 -y
 
 # DosBox
 sudo dnf install dosbox -y
