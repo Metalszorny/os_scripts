@@ -54,3 +54,26 @@ sudo apt install cups printer-driver-escpr hplip -y
 #sudo apt install tlp tlp-rdw -y
 #sudo systemctl enable tlp.service
 #sudo systemctl start tlp.service
+#sudo systemctl mask systemd-rfkill.service systemd-rfkill.socket
+# ThinkPads only:
+#sudo apt install tp-smapi-dkms -y
+
+# Tuned
+sudo apt install tuned -y
+sudo systemctl start tuned
+sudo systemctl enable tuned
+
+# Firewall
+sudo apt install -y ufw
+sudo ufw disable
+sudo ufw limit 22/tcp
+sudo ufw allow 80/tcp
+sudo ufw allow 443/tcp
+sudo ufw default deny incoming
+sudo ufw default allow outgoing
+sudo ufw enable
+
+# Timeshift
+sudo apt install timeshift -y
+
+# PDF viewer
