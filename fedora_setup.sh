@@ -221,6 +221,9 @@ sudo flatpak install flathub com.skype.Client -y
 # Zoom
 sudo flatpak install flathub us.zoom.Zoom -y
 
+# Bottles
+sudo flatpak install flathub com.usebottles.bottles -y
+
 ##########
 # Gaming
 ##########
@@ -244,9 +247,6 @@ sudo flatpak install flathub com.heroicgameslauncher.hgl -y
 # Lutris
 sudo dnf install lutris -y
 #sudo flatpak install flathub net.lutris.Lutris -y
-
-# Bottles
-sudo flatpak install flathub com.usebottles.bottles -y
 
 ##########
 # Programing
