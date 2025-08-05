@@ -245,6 +245,9 @@ sudo flatpak install flathub com.heroicgameslauncher.hgl -y
 sudo dnf install lutris -y
 #sudo flatpak install flathub net.lutris.Lutris -y
 
+# Bottles
+sudo flatpak install flathub com.usebottles.bottles -y
+
 ##########
 # Programing
 ##########
