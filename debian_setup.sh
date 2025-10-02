@@ -6,7 +6,7 @@
 
 # Enable non-free software
 sudo apt install software-properties-common -y
-sudo apt-add-repository contrib non-free non-free-firmware
+sudo apt-add-repository main contrib non-free non-free-firmware
 
 # Flatpak
 sudo apt install -y flatpak
@@ -41,6 +41,9 @@ sudo apt install wget -y
 # Codecs
 
 # Virtualization
+sudo apt install -y qemu-kvm qemu-system qemu-user-static qemu-utils qemu-system-x86 qemu-system-gui libvirt-daemon bridge-utils virtinst libvirt-daemon-system libvirt-clients virt-manager resolvconf
+sudo systemctl status libvirtd
+sudo systemctl restart networking
 
 # Theme
 
@@ -77,3 +80,57 @@ sudo ufw enable
 sudo apt install timeshift -y
 
 # PDF viewer
+sudo flatpak install flathub com.adobe.Reader -y
+
+# Chromium
+sudo apt install chromium -y
+
+# Firefox
+sudo apt install firefox-esr -y
+
+# Krusader
+sudo apt install krusader krename kdiff3 kompare -y
+
+# Thunderbird
+sudo flatpak install flathub org.mozilla.Thunderbird -y
+
+# k3b
+sudo apt install k3b -y
+
+# Brasero
+sudo apt install brasero -y
+
+# VLC
+sudo flatpak install flathub org.videolan.VLC -y
+
+# Tux Guitar
+sudo flatpak install flathub ar.com.tuxguitar.TuxGuitar -y
+
+# Clam Anti Virus
+sudo apt install clamav clamav-daemon clamav-freshclam clamdscan clamtk -y
+sudo systemctl stop clamav-freshclam
+sudo freshclam
+sudo systemctl enable clamav-freshclam --now
+
+# SciTE
+sudo flatpak install flathub org.scintilla.SciTE -y
+
+# Notepad++
+#sudo flatpak install flathub com.notepadqq.Notepadqq -y
+
+# Sublime Text 3
+sudo flatpak install flathub com.sublimetext.three com.sublimemerge.App -y
+
+# Libre Office
+sudo flatpak install flathub org.libreoffice.LibreOffice -y
+
+# Only Office
+sudo flatpak install flathub org.onlyoffice.desktopeditors -y
+
+# AnyDesk
+sudo flatpak install flathub com.anydesk.Anydesk -y
+
+# Balena Etcher
+wget -q https://github.com/balena-io/etcher/releases/download/v2.1.4/balena-etcher_2.1.4_amd64.deb
+sudo dpkg -i balena-etcher_*
+sudo apt --fix-broken install -y
