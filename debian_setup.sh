@@ -4,6 +4,9 @@
 # Basic update
 #sudo apt update -y && sudo apt upgrade -y && sudo flatpak update -y
 
+# Enable multiple architectures
+sudo dpkg --add-architecture i386
+
 # Enable non-free software
 sudo apt install software-properties-common -y
 sudo apt-add-repository main contrib non-free non-free-firmware
@@ -172,3 +175,20 @@ sudo apt install wine winetricks -y
 
 # DosBox
 sudo apt install dosbox -y
+
+# Steam
+sudo apt install steam-installer -y
+
+# Heroic Games Launcher
+#sudo apt install -y https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher/releases/download/v2.16.1/Heroic-2.16.1-linux-x86_64.rpm
+sudo flatpak install flathub com.heroicgameslauncher.hgl -y
+
+# Lutris
+sudo apt install lutris -y
+#sudo flatpak install flathub net.lutris.Lutris -y
+
+##########
+# Programing
+##########
+
+# Build Essentials
