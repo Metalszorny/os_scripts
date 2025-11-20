@@ -6,6 +6,7 @@
 
 # Enable multiple architectures
 sudo dpkg --add-architecture i386
+sudo apt update -y && sudo apt upgrade -y
 
 # Enable non-free software
 sudo apt install software-properties-common -y
@@ -192,3 +193,121 @@ sudo apt install lutris -y
 ##########
 
 # Build Essentials
+sudo apt install build-essential -y
+sudo apt install -y patch openssl openssh-server samba checkpolicy policycoreutils podman
+
+# Git
+sudo apt install git git-core -y
+
+# GitHub Desktop
+wget -qO - https://apt.packages.shiftkey.dev/gpg.key | gpg --dearmor | sudo tee /usr/share/keyrings/shiftkey-packages.gpg > /dev/null
+sudo sh -c 'echo "deb [arch=amd64 signed-by=/usr/share/keyrings/shiftkey-packages.gpg] https://apt.packages.shiftkey.dev/ubuntu/ any main" > /etc/apt/sources.list.d/shiftkey-packages.list'
+sudo apt update -y && sudo apt upgrade -y
+sudo apt install -y github-desktop
+
+##########
+# Programing Languages
+##########
+
+# Perl
+sudo apt install perl -y
+
+# Rust
+sudo apt install rustc cargo rustfmt -y
+sudo apt install rustup -y
+
+# C/C++
+sudo apt install gcc tcc cpp chibicc pcc g++ clang autoconf automake cmake -y
+
+# GTK+
+sudo apt install devhelp -y
+
+# Python
+sudo apt install python3 -y
+
+# .Net
+wget https://packages.microsoft.com/config/debian/13/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
+sudo dpkg -i packages-microsoft-prod.deb
+rm packages-microsoft-prod.deb
+sudo apt update -y && sudo apt upgrade -y
+sudo apt install dotnet-sdk-10.0 -y
+
+# Java
+sudo apt install default-jdk maven ant -y
+wget -O jdk-25_linux-x64_bin.deb https://download.oracle.com/java/25/latest/jdk-25_linux-x64_bin.deb
+sudo apt install ./jdk-25_linux-x64_bin.deb -y
+
+# PHP
+sudo apt install php phpunit php-cli php-common php-fpm php-ctype php-json php-mbstring php-gd php-curl php-mysqli php-xml php-gmp php-xmlrpc php-bcmath php-soap php-ldap php-mysqlnd -y
+
+# Deno
+sudo curl -fsSL https://deno.land/install.sh | sh
+
+# Ruby
+sudo apt install ruby -y
+
+# Node JS
+sudo apt install nodejs -y
+
+# Yarn
+sudo apt install yarnpkg -y
+
+# Go
+sudo apt install golang golang-go gccgo -y
+mkdir -p $HOME/go
+mkdir -p $HOME/go/src
+mkdir -p $HOME/go/bin
+
+##########
+# IDEs
+##########
+
+# Mono Develop
+sudo apt install mono-devel -y
+
+# Visual Studio Code
+sudo apt-get install wget gpg
+wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+sudo install -D -o root -g root -m 644 microsoft.gpg /usr/share/keyrings/microsoft.gpg
+rm -f microsoft.gpg
+sudo touch /etc/apt/sources.list.d/vscode.sources
+sudo chmod o+w /etc/apt/sources.list.d/vscode.sources
+sudo echo "Types: deb" >> /etc/apt/sources.list.d/vscode.sources
+sudo echo "URIs: https://packages.microsoft.com/repos/code" >> /etc/apt/sources.list.d/vscode.sources
+sudo echo "Suites: stable" >> /etc/apt/sources.list.d/vscode.sources
+sudo echo "Components: main" >> /etc/apt/sources.list.d/vscode.sources
+sudo echo "Architectures: amd64,arm64,armhf" >> /etc/apt/sources.list.d/vscode.sources
+sudo echo "Signed-By: /usr/share/keyrings/microsoft.gpg" >> /etc/apt/sources.list.d/vscode.sources
+sudo chmod o-w /etc/apt/sources.list.d/vscode.sources
+sudo apt install apt-transport-https -y
+sudo apt update -y && sudo apt upgrade -y
+sudo apt install code -y
+
+# Code Blocks
+sudo apt install codeblocks -y
+
+# JetBrains Toolbox
+sudo curl -fSL $(curl -s "https://data.services.jetbrains.com/products/releases?code=TBA&latest=true&type=release" | jq -r ".TBA[0].downloads.linux.link") -o "jetbrains-toolbox.tar.gz"
+if [ -d "/opt/jetbrains-toolbox" ]; then
+    sudo rm -rf "/opt/jetbrains-toolbox"
+fi
+sudo mkdir -p "/opt/jetbrains-toolbox"
+sudo tar -xzf "jetbrains-toolbox.tar.gz" -C "/opt/jetbrains-toolbox" --strip-components=1
+sudo ln -sf "/opt/jetbrains-toolbox/jetbrains-toolbox" "/usr/bin/jetbrains-toolbox"
+
+# Netbeans
+wget -O apache-netbeans_28-1_amd64.deb https://github.com/codelerity/netbeans-packages/releases/download/v28-build1/apache-netbeans_28-1_amd64.deb
+sudo apt install ./apache-netbeans_28-1_amd64.deb -y
+
+# Eclipse
+wget https://mirror.umd.edu/eclipse/oomph/epp/2025-03/R/eclipse-inst-jre-linux64.tar.gz
+if [ -d "/opt/eclipse-installer" ]; then
+    sudo rm -rf "/opt/eclipse-installer"
+fi
+sudo mkdir -p "/opt/eclipse-installer"
+sudo tar -xzf "eclipse-inst-jre-linux64.tar.gz" -C "/opt/eclipse-installer" --strip-components=1
+/opt/eclipse-installer/eclipse-inst
+
+##########
+# Databases
+##########
