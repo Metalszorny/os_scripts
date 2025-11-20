@@ -134,3 +134,41 @@ sudo flatpak install flathub com.anydesk.Anydesk -y
 wget -q https://github.com/balena-io/etcher/releases/download/v2.1.4/balena-etcher_2.1.4_amd64.deb
 sudo dpkg -i balena-etcher_*
 sudo apt --fix-broken install -y
+
+# TeamViewer
+wget -O teamviewer_amd64.deb https://download.teamviewer.com/download/linux/teamviewer_amd64.deb
+sudo apt install ./teamviewer_amd64.deb -y
+
+# Blender
+sudo flatpak install flathub org.blender.Blender -y
+
+# InkScape
+sudo flatpak install flathub org.inkscape.Inkscape -y
+
+# GIMP
+sudo flatpak install flathub org.gimp.GIMP -y
+
+# WireShark
+sudo apt install wireshark -y
+
+# Nord VPN
+sh <(wget -qO - https://downloads.nordcdn.com/apps/linux/install.sh) -p nordvpn-gui -y
+
+# Zoom
+sudo flatpak install flathub us.zoom.Zoom -y
+
+# Bottles
+sudo flatpak install flathub com.usebottles.bottles -y
+
+##########
+# Gaming
+##########
+
+# Gaming Essentials
+sudo apt install -y dbus vulkan-tools mangohud goverlay gamescope gamemode vkbasalt
+
+# Wine
+sudo apt install wine winetricks -y
+
+# DosBox
+sudo apt install dosbox -y
