@@ -43,6 +43,12 @@ sudo apt install wget -y
 #sudo dpkg-reconfigure nvidia-kernel-dkms
 
 # Codecs
+sudo apt install libavcodec-extra libdvdcss2 -y
+sudo dpkg-reconfigure libdvd-pkg
+echo "deb http://www.deb-multimedia.org buster main non-free" | sudo tee /etc/apt/sources.list.d/deb-multimedia.list
+sudo apt update --allow-insecure-repositories
+wget https://www.deb-multimedia.org/pool/main/d/deb-multimedia-keyring/deb-multimedia-keyring_2024.9.1_all.deb
+sudo dpkg -i deb-multimedia-keyring_2024.9.1_all.deb
 
 # Virtualization
 sudo apt install -y qemu-kvm qemu-system qemu-user-static qemu-utils qemu-system-x86 qemu-system-gui libvirt-daemon bridge-utils virtinst libvirt-daemon-system libvirt-clients virt-manager resolvconf
@@ -50,6 +56,23 @@ sudo systemctl status libvirtd
 sudo systemctl restart networking
 
 # Theme
+#lookandfeeltool -a org.kde.breezedark.desktop
+#sudo apt install -y qt6ct kvantum
+#mkdir -p "$HOME/.config/qt6ct"
+#cat <<EOF > "$HOME/.config/qt6ct/qt6ct.conf"
+#[Appearance]
+#style=kvantum
+#color_scheme=default
+#icon_theme=breeze
+#EOF
+#if ! grep -q "QT_QPA_PLATFORMTHEME=qt6ct" /etc/environment; then
+#    echo "QT_QPA_PLATFORMTHEME=qt6ct" | sudo tee -a /etc/environment > /dev/null
+#fi
+#mkdir -p "$HOME/.config/Kvantum"
+#cat <<EOF > "$HOME/.config/Kvantum/kvantum.kvconfig"
+#[General]
+#theme=KvArcDark
+#EOF
 
 # Archiving
 sudo apt install ark unrar zip unzip tar xz-utils gzip bzip2 minizip lzma lhasa arj unace dpkg -y
@@ -138,6 +161,9 @@ sudo flatpak install flathub com.anydesk.Anydesk -y
 wget -q https://github.com/balena-io/etcher/releases/download/v2.1.4/balena-etcher_2.1.4_amd64.deb
 sudo dpkg -i balena-etcher_*
 sudo apt --fix-broken install -y
+
+# Virtual Box
+# Is QEMU and Virtualization Manager
 
 # TeamViewer
 wget -O teamviewer_amd64.deb https://download.teamviewer.com/download/linux/teamviewer_amd64.deb
