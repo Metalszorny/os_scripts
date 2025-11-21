@@ -311,3 +311,95 @@ sudo tar -xzf "eclipse-inst-jre-linux64.tar.gz" -C "/opt/eclipse-installer" --st
 ##########
 # Databases
 ##########
+
+# SQLite
+sudo apt install sqlite3 sqlitebrowser sqlite3-doc -y
+
+# MariaDB
+sudo apt install mariadb-server libreoffice-base -y
+sudo systemctl enable mariadb
+sudo systemctl start mariadb
+sudo mysql_secure_installation
+
+# MySql
+# Is MariaDB
+
+# PostgreSQL
+sudo apt install postgresql -y
+curl -fsS https://www.pgadmin.org/static/packages_pgadmin_org.pub | sudo gpg --dearmor -o /usr/share/keyrings/packages-pgadmin-org.gpg
+sudo sh -c 'echo "deb [signed-by=/usr/share/keyrings/packages-pgadmin-org.gpg] https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/$(lsb_release -cs) pgadmin4 main" > /etc/apt/sources.list.d/pgadmin4.list && apt update'
+sudo apt install pgadmin4 -y
+sudo /usr/pgadmin4/bin/setup-web.sh
+
+# MongoDB
+sudo apt install gnupg curl -y
+curl -fsSL https://www.mongodb.org/static/pgp/server-7.0.asc | sudo gpg -o /usr/share/keyrings/mongodb-server-7.0.gpg --dearmor
+echo "deb [ signed-by=/usr/share/keyrings/mongodb-server-7.0.gpg ] http://repo.mongodb.org/apt/debian bookworm/mongodb-org/7.0 main" | sudo tee /etc/apt/sources.list.d/mongodb-org-7.0.list
+sudo apt update
+sudo apt install -y mongodb-org
+sudo systemctl start mongod
+sudo systemctl enable mongod
+wget https://downloads.mongodb.com/compass/mongodb-compass_1.46.10_amd64.deb
+sudo apt install ./mongodb-compass_1.46.10_amd64.deb
+
+##########
+# Tools
+##########
+
+# Meld
+sudo flatpak install flathub org.gnome.meld -y
+
+# Postman
+wget https://dl.pstmn.io/download/latest/linux64 -O postman-linux-x64.tar.gz
+if [ -d "/opt/postman" ]; then
+    sudo rm -rf "/opt/postman"
+fi
+sudo mkdir -p "/opt/postman"
+sudo tar -xzf "postman-linux-x64.tar.gz" -C "/opt/postman" --strip-components=1
+sudo ln -sf "/opt/postman/Postman" "/usr/bin/postman"
+sudo touch /usr/share/applications/postman.desktop
+sudo chmod o+w /usr/share/applications/postman.desktop
+sudo echo "[Desktop Entry]" >> /usr/share/applications/postman.desktop
+sudo echo "Encoding=UTF-8" >> /usr/share/applications/postman.desktop
+sudo echo "Name=Postman" >> /usr/share/applications/postman.desktop
+sudo echo "Exec=postman" >> /usr/share/applications/postman.desktop
+sudo echo "Icon=/opt/postman/app/resources/app/assets/icon.png" >> /usr/share/applications/postman.desktop
+sudo echo "Terminal=false" >> /usr/share/applications/postman.desktop
+sudo echo "Type=Application" >> /usr/share/applications/postman.desktop
+sudo echo "Categories=Development;" >> /usr/share/applications/postman.desktop
+sudo chmod o-w /usr/share/applications/postman.desktop
+#sudo flatpak install flathub com.getpostman.Postman -y
+
+# Docker
+sudo apt install ca-certificates -y
+sudo install -m 0755 -d /etc/apt/keyrings
+sudo curl -fsSL https://download.docker.com/linux/debian/gpg -o /etc/apt/keyrings/docker.asc
+sudo chmod a+r /etc/apt/keyrings/docker.asc
+sudo tee /etc/apt/sources.list.d/docker.sources <<EOF
+Types: deb
+URIs: https://download.docker.com/linux/debian
+Suites: $(. /etc/os-release && echo "$VERSION_CODENAME")
+Components: stable
+Signed-By: /etc/apt/keyrings/docker.asc
+EOF
+sudo apt update -y
+sudo apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y
+sudo systemctl start docker
+sudo systemctl enable --now docker
+
+# Composer
+sudo apt install composer -y
+
+# Apache
+sudo apt install apache2 -y
+sudo systemctl enable apache2
+sudo systemctl start apache2
+mkdir -p /var/www/html/
+
+# Lamp
+# Is made out of Apache, MariaDB and PHP
+
+# Symphony
+# Is made out of LAMP and composer
+#curl -1sLf 'https://dl.cloudsmith.io/public/symfony/stable/setup.deb.sh' | sudo -E bash
+#sudo apt install symfony-cli -y
