@@ -218,9 +218,6 @@ sudo dnf install wireshark -y
 # Nord VPN
 sudo sh <(wget -qO - https://downloads.nordcdn.com/apps/linux/install.sh) -p nordvpn-gui -y
 
-# Skype
-sudo flatpak install flathub com.skype.Client -y
-
 # Zoom
 sudo flatpak install flathub us.zoom.Zoom -y
 
@@ -232,7 +229,7 @@ sudo flatpak install flathub com.usebottles.bottles -y
 ##########
 
 # Gaming Essentials
-sudo dnf install -y dbus vulkan mangohud goverlay gamescope magemode vkbasalt
+sudo dnf install -y dbus vulkan mangohud goverlay gamescope gamemode vkbasalt
 
 # Wine
 sudo dnf install wine winetricks wine-core wine-core.i686 -y
