@@ -157,6 +157,9 @@ sudo flatpak install flathub org.onlyoffice.desktopeditors -y
 # AnyDesk
 sudo flatpak install flathub com.anydesk.Anydesk -y
 
+# Remmina
+sudo flatpak install flathub org.remmina.Remmina -y
+
 # Balena Etcher
 wget -q https://github.com/balena-io/etcher/releases/download/v2.1.4/balena-etcher_2.1.4_amd64.deb
 sudo dpkg -i balena-etcher_*
@@ -374,6 +377,9 @@ sudo apt install ./mongodb-compass_1.46.10_amd64.deb
 
 # Meld
 sudo flatpak install flathub org.gnome.meld -y
+
+# PuTTY
+sudo flatpak install flathub -y uk.org.greenend.chiark.sgtatham.putty
 
 # Postman
 wget https://dl.pstmn.io/download/latest/linux64 -O postman-linux-x64.tar.gz

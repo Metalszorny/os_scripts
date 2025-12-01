@@ -194,6 +194,9 @@ sudo flatpak install flathub com.anydesk.Anydesk -y
 # Remmina
 sudo flatpak install flathub org.remmina.Remmina -y
 
+# Remmina
+sudo flatpak install flathub org.remmina.Remmina -y
+
 # Balena Etcher
 sudo dnf install balena-etcher -y
 
@@ -412,6 +415,9 @@ sudo dnf install https://downloads.mongodb.com/compass/mongodb-compass-1.45.4.x8
 
 # Meld
 sudo flatpak install flathub org.gnome.meld -y
+
+# PuTTY
+sudo flatpak install flathub -y uk.org.greenend.chiark.sgtatham.putty
 
 # Postman
 wget https://dl.pstmn.io/download/latest/linux_64
