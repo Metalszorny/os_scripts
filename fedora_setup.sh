@@ -194,9 +194,6 @@ sudo flatpak install flathub com.anydesk.Anydesk -y
 # Remmina
 sudo flatpak install flathub org.remmina.Remmina -y
 
-# Remmina
-sudo flatpak install flathub org.remmina.Remmina -y
-
 # Balena Etcher
 sudo dnf install balena-etcher -y
 
