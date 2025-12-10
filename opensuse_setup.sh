@@ -4,6 +4,8 @@
 # Basic update
 #sudo zypper refresh -y && sudo zypper --non-interactive dup -y && sudo flatpak update -y
 
+# Enable 32 bit
+
 # BRTFS
 
 # Flatpak
@@ -193,3 +195,96 @@ sudo flatpak install -y flathub com.usebottles.bottles
 ##########
 
 # Gaming Essentials
+sudo zypper addrepo https://download.opensuse.org/repositories/games:tools/16.0/games:tools.repo
+sudo zypper refresh
+sudo zypper install -y dbus-1 vulkan-tools mangohud gamescope gamemode vkbasalt
+
+# Wine
+sudo zypper install -y wine winetricks
+
+# DosBox
+sudo zypper install -y dosbox
+
+# Steam
+sudo flatpak install -y flathub com.valvesoftware.Steam
+#sudo zypper install -y steam
+
+# Heroic Games Launcher
+sudo flatpak install -y flathub com.heroicgameslauncher.hgl
+
+# Lutris
+#sudo zypper install -y lutris
+sudo flatpak install -y flathub net.lutris.Lutris
+
+##########
+# Programing
+##########
+
+# Build Essentials
+sudo zypper install -y -t pattern devel_basis
+
+# Git
+sudo zypper install -y git git-core
+
+# GitHub Desktop
+sudo flatpak install -y flathub io.github.shiftey.Desktop
+
+##########
+# Programing Languages
+##########
+
+# Perl
+sudo zypper install -y perl
+
+# Rust
+sudo zypper install -y rustup
+
+# C/C++
+sudo zypper install -y gcc cpp clang autoconf automake cmake
+
+# GTK+
+sudo zypper install -y devhelp
+
+# Python
+sudo zypper install -y python3
+
+# .Net
+sudo zypper install -y libicu
+sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
+wget https://packages.microsoft.com/config/opensuse/16/prod.repo
+sudo mv prod.repo /etc/zypp/repos.d/microsoft-prod.repo
+sudo chown root:root /etc/zypp/repos.d/microsoft-prod.repo
+sudo zypper refresh
+sudo zypper install -y dotnet-sdk-10.0
+
+# Java
+sudo zypper install -y java
+wget -O jdk-25_linux-x64_bin.rpm https://download.oracle.com/java/25/latest/jdk-25_linux-x64_bin.rpm
+sudo rpm -i ./jdk-25_linux-x64_bin.rpm
+
+# PHP
+sudo zypper install -y php php-cli php-fpm php-ctype php-json php-mbstring php-gd php-curl php-mysqli php-xml php-gmp php-bcmath php-soap php-ldap
+
+# Deno
+sudo curl -fsSL https://deno.land/install.sh | sh
+
+# Ruby
+sudo zypper install -y ruby
+
+# Node JS
+sudo zypper install -y nodejs
+
+# Yarn
+sudo zypper install -y yarn
+
+# Go
+sudo zypper install -y golang
+mkdir -p $HOME/go
+mkdir -p $HOME/go/src
+mkdir -p $HOME/go/bin
+
+##########
+# IDEs
+##########
+
+# Mono Develop
