@@ -179,8 +179,8 @@ sudo flatpak install flathub org.scintilla.SciTE -y
 # Notepad++
 #sudo flatpak install flathub com.notepadqq.Notepadqq -y
 
-# Sublime Text 3
-sudo flatpak install flathub com.sublimetext.three com.sublimemerge.App -y
+# Sublime Text
+sudo flatpak install flathub com.sublimehq.SublimeText -y
 
 # Libre Office
 sudo flatpak install flathub org.libreoffice.LibreOffice -y
