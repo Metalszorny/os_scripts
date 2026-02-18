@@ -246,7 +246,7 @@ sudo zypper install -y gcc cpp clang autoconf automake cmake
 sudo zypper install -y devhelp
 
 # Python
-sudo zypper install -y python3
+sudo zypper install -y python3 python3-setuptools python3-pip
 
 # .Net
 sudo zypper install -y libicu
@@ -288,3 +288,86 @@ mkdir -p $HOME/go/bin
 ##########
 
 # Mono Develop
+# Use Visual Studio Code with C# dev kit
+
+# Visual Studio Code
+sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc &&
+echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\nautorefresh=1\ntype=rpm-md\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" | sudo tee /etc/zypp/repos.d/vscode.repo > /dev/null
+sudo zypper install -y code
+
+# Code Blocks
+sudo flatpak install -y flathub org.codeblocks.codeblocks
+
+# JetBrains Toolbox
+sudo curl -fSL $(curl -s "https://data.services.jetbrains.com/products/releases?code=TBA&latest=true&type=release" | jq -r ".TBA[0].downloads.linux.link") -o "jetbrains-toolbox.tar.gz"
+if [ -d "/opt/jetbrains-toolbox" ]; then
+    sudo rm -rf "/opt/jetbrains-toolbox"
+fi
+sudo mkdir -p "/opt/jetbrains-toolbox"
+sudo tar -xzf "jetbrains-toolbox.tar.gz" -C "/opt/jetbrains-toolbox" --strip-components=1
+sudo ln -sf "/opt/jetbrains-toolbox/jetbrains-toolbox" "/usr/bin/jetbrains-toolbox"
+
+# Netbeans
+sudo flatpak install -y flathub org.apache.netbeans
+
+# Eclipse
+wget https://mirror.umd.edu/eclipse/oomph/epp/2025-03/R/eclipse-inst-jre-linux64.tar.gz
+if [ -d "/opt/eclipse-installer" ]; then
+    sudo rm -rf "/opt/eclipse-installer"
+fi
+sudo mkdir -p "/opt/eclipse-installer"
+sudo tar -xzf "eclipse-inst-jre-linux64.tar.gz" -C "/opt/eclipse-installer" --strip-components=1
+/opt/eclipse-installer/eclipse-inst
+
+##########
+# Databases
+##########
+
+# SQLite
+sudo zypper install -y sqlite3 sqlite3-devel sqlite3-doc
+
+# MariaDB
+sudo zypper install -y mariadb
+sudo systemctl enable --now mariadb
+sudo systemctl start --now mariadb
+sudo mysql_secure_installation
+
+# MySql
+# Is MariaDB
+
+# PostgreSQL
+sudo zypper in postgresql postgresql-server postgresql-contrib -y
+sudo zypper in postgresql-plperl postgresql-plpython postgresql-pltcl -y
+sudo systemctl enable postgresql
+sudo systemctl start postgresql
+
+# MongoDB
+
+
+##########
+# Tools
+##########
+
+# Meld
+sudo flatpak install -y flathub org.gnome.meld
+
+# PuTTY
+sudo flatpak install -y flathub uk.org.greenend.chiark.sgtatham.putty
+
+# Postman
+
+
+# Docker
+
+
+# Composer
+
+
+# Apache
+
+
+# Lamp
+# Is made out of Apache, MariaDB and PHP
+
+# Symphony
+# Is made out of LAMP and composer
