@@ -183,6 +183,7 @@ sudo flatpak install -y flathub org.gimp.GIMP
 sudo zypper install -y wireshark
 
 # Nord VPN
+#sudo sh <(wget -qO - https://downloads.nordcdn.com/apps/linux/install.sh) -p nordvpn-gui -y
 
 # Zoom
 sudo flatpak install -y flathub us.zoom.Zoom
@@ -327,7 +328,7 @@ sudo tar -xzf "eclipse-inst-jre-linux64.tar.gz" -C "/opt/eclipse-installer" --st
 sudo zypper install -y sqlite3 sqlite3-devel sqlite3-doc
 
 # MariaDB
-sudo zypper install -y mariadb
+sudo zypper install -y mariadb phpMyAdmin
 sudo systemctl enable --now mariadb
 sudo systemctl start --now mariadb
 sudo mysql_secure_installation
@@ -340,9 +341,18 @@ sudo zypper in postgresql postgresql-server postgresql-contrib -y
 sudo zypper in postgresql-plperl postgresql-plpython postgresql-pltcl -y
 sudo systemctl enable postgresql
 sudo systemctl start postgresql
+sudo flatpak install -y flathub org.pgadmin.pgadmin4
 
 # MongoDB
-
+sudo rpm --import https://pgp.mongodb.com/server-7.0.asc
+sudo zypper addrepo --gpgcheck "https://repo.mongodb.org/zypper/suse/15/mongodb-org/7.0/x86_64/" mongodb
+# Missing lincrypto.so.1.1()64bit
+sudo zypper install -y mongodb-org
+sudo systemctl enable mongod
+sudo systemctl start mongod
+#sudo zypper in gnome-keyring libnotify-tools
+#sudo rpm -ivh https://downloads.mongodb.com/compass/mongodb-compass-1.45.4.x86_64.rpm
+sudo flatpak install -y flathub com.mongodb.Compass
 
 ##########
 # Tools
@@ -355,16 +365,20 @@ sudo flatpak install -y flathub org.gnome.meld
 sudo flatpak install -y flathub uk.org.greenend.chiark.sgtatham.putty
 
 # Postman
-
+sudo flatpak install -y flathub com.getpostman.Postman
 
 # Docker
-
+sudo zypper install -y docker docker-compose
+sudo systemctl enable docker
+sudo systemctl start docker
 
 # Composer
-
+sudo zypper install -y php-composer
 
 # Apache
-
+sudo zypper install -y apache2
+sudo systemctl enable apache2
+sudo systemctl start apache2
 
 # Lamp
 # Is made out of Apache, MariaDB and PHP
