@@ -337,7 +337,7 @@ sudo tar -xzf "eclipse-inst-jre-linux64.tar.gz" -C "/opt/eclipse-installer" --st
 sudo apt install sqlite3 sqlitebrowser sqlite3-doc -y
 
 # MariaDB
-sudo apt install mariadb-server libreoffice-base -y
+sudo apt install mariadb-server libreoffice-base phpmyadmin -y
 sudo systemctl enable mariadb
 sudo systemctl start mariadb
 sudo mysql_secure_installation
