@@ -190,6 +190,9 @@ sudo flatpak install -y flathub us.zoom.Zoom
 # Bottles
 sudo flatpak install -y flathub com.usebottles.bottles
 
+# Calibre
+sudo flatpak install -y flathub com.calibre_ebook.calibre
+
 ##########
 # Gaming
 ##########
