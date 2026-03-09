@@ -129,8 +129,17 @@ sudo pacman -S cups hplip --needed --noconfirm
 ""$AUR_HELPER"" -S epson-inkjet-printer-escpr --needed --noconfirm
 
 # TLP
+#sudo sudo pacman -S tlp tlp-pd tlp-rdw --needed --noconfirm
+#sudo systemctl enable --now tlp-pd.service
+#sudo systemctl start tlp-pd.service
+#sudo systemctl mask systemd-rfkill.service systemd-rfkill.socket
+# ThinkPads only:
+#sudo pacman -S tp_smapi --needed --noconfirm
 
 # Tuned
+sudo pacman -S tuned --needed --noconfirm
+sudo systemctl start tuned
+sudo systemctl enable tuned
 
 # Firewall
 
