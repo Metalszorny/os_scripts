@@ -7,6 +7,13 @@ AUR_HELPER="yay"
 # Basic updte
 sudo pacman -Syu
 
+# Enable multilib
+if ! grep -q "^\s*\[multilib\]" /etc/pacman.conf; then
+    echo "[multilib]" | sudo tee -a /etc/pacman.conf
+    echo "Include = /etc/pacman.d/mirrorlist" | sudo tee -a /etc/pacman.conf
+    sudo pacman -Syu
+fi
+
 # Curl
 sudo pacman -S curl --needed --noconfirm
 
@@ -38,6 +45,14 @@ cd
 #curl -L https://gist.github.com/phoepsilonix/1f841b74270ad6a21bc4a065fceaebcd/raw/4fc68830fc9e617da99ae7476d66be3ac7516eb0/gistfile1.txt | patch -p1 -i-
 #makepkg -Cfi --noconfirm
 #cd
+
+# Chaotic-AUR
+sudo pacman-key --recv-key 3056513887B78AEB --keyserver keyserver.ubuntu.com
+sudo pacman-key --lsign-key 3056513887B78AEB
+sudo pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst' --noconfirm
+sudo pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst' --noconfirm
+printf "\n[chaotic-aur]\nInclude = /etc/pacman.d/chaotic-mirrorlist" | sudo tee -a /etc/pacman.conf
+sudo pacman -Syu --noconfirm
 
 # Flatpak
 sudo pacman -S flatpak --needed --noconfirm
@@ -80,6 +95,17 @@ sudo pacman -S flatpak --needed --noconfirm
 # TODO: Generate key for secure boot?
 
 # Codecs
+sudo pacman -S ffmpeg gst-plugins-base gst-plugins-good gst-plugins-bad gst-plugins-ugly --needed --noconfirm
+
+# Firewall
+sudo pacman -S ufw --needed --noconfirm
+sudo ufw disable
+sudo ufw limit 22/tcp
+sudo ufw allow 80/tcp
+sudo ufw allow 443/tcp
+sudo ufw default deny incoming
+sudo ufw default allow outgoing
+sudo ufw enable
 
 # Virtualization
 sudo pacman -S qemu-desktop qemu-emulators-full swtpm libvirt dmidecode dnsmasq virt-manager --needed --noconfirm
@@ -126,7 +152,7 @@ sudo pacman -S ark unrar zip unzip tar xz gzip bzip2 minizip lha arj unarj unace
 
 # Printers
 sudo pacman -S cups hplip --needed --noconfirm
-""$AUR_HELPER"" -S epson-inkjet-printer-escpr --needed --noconfirm
+"$AUR_HELPER" -S epson-inkjet-printer-escpr --noconfirm
 
 # TLP
 #sudo sudo pacman -S tlp tlp-pd tlp-rdw --needed --noconfirm
@@ -141,25 +167,29 @@ sudo pacman -S tuned --needed --noconfirm
 sudo systemctl start tuned
 sudo systemctl enable tuned
 
-# Firewall
-
 # Timeshift
+sudo pacman -S timeshift --needed --noconfirm
 
 # PDF viewer
 sudo flatpak install flathub com.adobe.Reader -y
 
 # Chromium
+sudo pacman -S chromium --needed --noconfirm
 
 # Firefox
+sudo pacman -S firefox --needed --noconfirm
 
 # Krusader
+sudo pacman -S krusader krename kdiff3 kompare --needed --noconfirm
 
 # Thunderbird
 sudo flatpak install flathub org.mozilla.Thunderbird -y
 
 # k3b
+sudo pacman -S k3b --needed --noconfirm
 
 # Brasero
+sudo pacman -S brasero --needed --noconfirm
 
 # VLC
 sudo flatpak install flathub org.videolan.VLC -y
@@ -168,6 +198,10 @@ sudo flatpak install flathub org.videolan.VLC -y
 sudo flatpak install flathub ar.com.tuxguitar.TuxGuitar -y
 
 # Clam Anti Virus
+sudo pacman -S clamav clamtk --needed --noconfirm
+sudo systemctl stop clamav-freshclam
+sudo freshclam
+sudo systemctl enable clamav-freshclam --now
 
 # SciTE
 sudo flatpak install flathub org.scintilla.SciTE -y
@@ -191,10 +225,13 @@ sudo flatpak install flathub com.anydesk.Anydesk -y
 sudo flatpak install flathub org.remmina.Remmina -y
 
 # Balena Etcher
+sudo pacman -S balena-etcher --needed --noconfirm
 
 # Virtual Box
+sudo pacman -S VirtualBox --needed --noconfirm
 
 # TeamViewer
+"$AUR_HELPER" -S teamviewer --noconfirm
 
 # Blender
 sudo flatpak install flathub org.blender.Blender -y
@@ -206,8 +243,10 @@ sudo flatpak install flathub org.inkscape.Inkscape -y
 sudo flatpak install flathub org.gimp.GIMP -y
 
 # WireShark
+sudo pacman -S wireshark-qt wireshark-cli --needed --noconfirm
 
 # Nord VPN
+#sudo sh <(wget -qO - https://downloads.nordcdn.com/apps/linux/install.sh) -p nordvpn-gui -y
 
 # Zoom
 sudo flatpak install flathub us.zoom.Zoom -y
@@ -223,16 +262,23 @@ sudo flatpak install flathub com.calibre_ebook.calibre -y
 ##########
 
 # Gaming Essentials
+sudo pacman -S dbus vulkan-tools mangohud goverlay gamescope gamemode vkbasalt --needed --noconfirm
 
 # Wine
+sudo pacman -S wine winetricks --needed --noconfirm
 
 # DosBox
+sudo pacman -S dosbox --needed --noconfirm
 
 # Steam
+sudo pacman -S steam --needed --noconfirm
 
 # Heroic Games Launcher
+#"$AUR_HELPER" -S heroic-games-launcher-bin --noconfirm
 sudo flatpak install flathub com.heroicgameslauncher.hgl -y
+
 # Lutris
+sudo pacman -S lutris --needed --noconfirm
 #sudo flatpak install flathub net.lutris.Lutris -y
 
 ##########

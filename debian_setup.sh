@@ -213,7 +213,7 @@ sudo apt install dosbox -y
 sudo apt install steam-installer -y
 
 # Heroic Games Launcher
-#sudo apt install -y https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher/releases/download/v2.16.1/Heroic-2.16.1-linux-x86_64.rpm
+#sudo apt install -y https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher/releases/download/v2.16.1/Heroic-2.16.1-linux-x86_64.deb
 sudo flatpak install flathub com.heroicgameslauncher.hgl -y
 
 # Lutris
