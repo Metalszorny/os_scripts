@@ -24,7 +24,7 @@ sudo pacman -S wget --needed --noconfirm
 sudo pacman -S git --needed --noconfirm
 
 # Build Essentials
-sudo pacman -S base-devel devtools less --needed --noconfirm
+sudo pacman -S base-devel devtools less patch openssl samba podman --needed --noconfirm
 
 #
 sudo pacman -S cargo --needed --noconfirm
@@ -262,7 +262,17 @@ sudo flatpak install flathub com.calibre_ebook.calibre -y
 ##########
 
 # Gaming Essentials
-sudo pacman -S dbus vulkan-tools mangohud goverlay gamescope gamemode vkbasalt --needed --noconfirm
+sudo pacman -S dbus vulkan-tools mangohud goverlay gamescope gamemode vkbasalt \
+    gnutls lib32-gnutls base-devel gtk3 lib32-gtk3 python-google-auth python-protobuf \
+    libpulse lib32-libpulse alsa-lib lib32-alsa-lib alsa-utils alsa-plugins lib32-alsa-plugins \
+    giflib lib32-giflib libpng lib32-libpng libldap lib32-libldap openal lib32-openal \
+    libxcomposite lib32-libxcomposite libxinerama lib32-libxinerama libgcrypt lib32-libgcrypt \
+    libgpg-error lib32-libgpg-error ncurses lib32-ncurses mpg123 lib32-mpg123 \
+    libjpeg-turbo lib32-libjpeg-turbo sqlite lib32-sqlite libva lib32-libva \
+    gst-plugins-base-libs lib32-gst-plugins-base-libs sdl2 lib32-sdl2 v4l-utils lib32-v4l-utils \
+    vulkan-icd-loader lib32-vulkan-icd-loader ocl-icd lib32-ocl-icd opencl-icd-loader lib32-opencl-icd-loader \
+    libxslt lib32-libxslt cups samba lib32-mesa vulkan-radeon lib32-vulkan-radeon \
+    lib32-mangohud lib32-gamemode --needed --noconfirm
 
 # Wine
 sudo pacman -S wine winetricks --needed --noconfirm
@@ -286,39 +296,53 @@ sudo pacman -S lutris --needed --noconfirm
 ##########
 
 # GitHub Desktop
+"$AUR_HELPER" -S github-desktop --noconfirm
 
 ##########
 # Programing Languages
 ##########
 
 # Perl
+sudo pacman -S perl perl-lib --needed --noconfirm
 
 # Rust
+sudo pacman -S rust cargo rustfmt --needed --noconfirm
 
 # C/C++
-
-# GTK+
+sudo pacman -S gcc clang autoconf automake cmake --needed --noconfirm
 
 # Python
+sudo pacman -S python --needed --noconfirm
 
 # .Net
+sudo pacman -S dotnet-sdk-10.0 --needed --noconfirm
 
 # Java
+sudo pacman -S jdk-openjdk maven ant --needed --noconfirm
 
 # PHP
+sudo pacman -S php php-fpm --needed --noconfirm
+sudo systemctl enable php-fpm
+sudo systemctl start php-fpm
 
 # Deno
+sudo curl -fsSL https://deno.land/install.sh | sh
 
 # Ruby
+sudo pacman -S ruby --needed --noconfirm
 
 # Node JS
+sudo pacman -S nodejs --needed --noconfirm
 
 # Yarn
+sudo pacman -S yarn --needed --noconfirm
 
 # Go
+sudo pacman -S go --needed --noconfirm
 mkdir -p $HOME/go
 mkdir -p $HOME/go/src
 mkdir -p $HOME/go/bin
+echo 'export GOPATH=$HOME/go' >> $HOME/.bashrc
 source $HOME/.bashrc
 
 ##########
@@ -326,16 +350,22 @@ source $HOME/.bashrc
 ##########
 
 # Mono Develop
+"$AUR_HELPER" -S monodevelop-bin --noconfirm
 
 # Visual Studio Code
+"$AUR_HELPER" -S visual-studio-code-bin --noconfirm
 
 # Code Blocks
+"$AUR_HELPER" -S codeblocks --noconfirm
 
 # JetBrains Toolbox
+"$AUR_HELPER" -S jetbrains-toolbox --noconfirm
 
 # Netbeans
+"$AUR_HELPER" -S netbeans --noconfirm
 
 # Eclipse
+"$AUR_HELPER" -S eclipse --noconfirm
 
 ##########
 # Databases
