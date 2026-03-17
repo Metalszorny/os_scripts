@@ -24,7 +24,7 @@ sudo pacman -S wget --needed --noconfirm
 sudo pacman -S git --needed --noconfirm
 
 # Build Essentials
-sudo pacman -S base-devel devtools less patch openssl samba podman --needed --noconfirm
+sudo pacman -S base-devel devtools less patch openssl samba podman tree tldr trash-cli cmake make --needed --noconfirm
 
 #
 sudo pacman -S cargo --needed --noconfirm
@@ -148,7 +148,7 @@ sudo usermod "$USER" -aG kvm
 #EOF
 
 # Archiving
-sudo pacman -S ark unrar zip unzip tar xz gzip bzip2 minizip lha arj unarj unace dpkg --needed --noconfirm
+sudo pacman -S ark unrar zip unzip tar xz gzip bzip2 minizip lha arj unarj unace dpkg jq --needed --noconfirm
 
 # Printers
 sudo pacman -S cups hplip --needed --noconfirm
@@ -372,15 +372,29 @@ source $HOME/.bashrc
 ##########
 
 # SQLite
+sudo pacman -S sqlite sqlite-tcl sqlitebrowser sqlite-doc --needed --noconfirm
 
 # MariaDB
+sudo pacman -S mariadb mariadb-server phpmyadmin --needed --noconfirm
+sudo systemctl enable mariadb
+sudo systemctl start mariadb
+#sudo mysql_secure_installation
+sudo mariadb-secure-installation
 
 # MySql
 # Is MariaDB
 
 # PostgreSQL
+sudo pacman -S postgresql --needed --noconfirm
+sudo systemctl enable postgresql
+sudo systemctl start postgresql
+"$AUR_HELPER" -S pgadmin4 pgadmin4-desktop pgadmin4-web --noconfirm
 
 # MongoDB
+sudo pacman -S mongodb --needed --noconfirm
+sudo systemctl enable mongod mongod.service
+sudo systemctl start mongod mongod.service
+"$AUR_HELPER" -S mongodb-compass --noconfirm
 
 ##########
 # Tools
@@ -390,17 +404,24 @@ source $HOME/.bashrc
 sudo flatpak install flathub org.gnome.meld -y
 
 # PuTTY
-sudo flatpak install flathub -y uk.org.greenend.chiark.sgtatham.putty
+sudo flatpak install flathub uk.org.greenend.chiark.sgtatham.putty -y
 
 # Postman
+"$AUR_HELPER" -S postman --noconfirm
 #sudo flatpak install flathub com.getpostman.Postman -y
 
 # Docker
+sudo pacman -S install docker --needed --noconfirm
+sudo systemctl enable --now docker
 
 # Composer
+sudo pacman -S composer --needed --noconfirm
 
 # Apache
-mkdir -p /var/www/html/
+sudo pacman -S apache --needed --noconfirm
+sudo systemctl enable apache apache.service
+sudo systemctl start apache apache.service
+sudo mkdir -p /var/www/html/
 
 # Lamp
 # Is made out of Apache, MariaDB and PHP
