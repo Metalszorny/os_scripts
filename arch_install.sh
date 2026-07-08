@@ -29,3 +29,5 @@ iwctl
 station ${WIRELESS_DEVICE_NAME} connect ${WIRELESS_SSID} --passphrase ${WIRELESS_PASSWORD}
 exit
 #ip addr show
+
+archinstall
