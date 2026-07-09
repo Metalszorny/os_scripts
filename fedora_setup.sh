@@ -143,6 +143,9 @@ sudo dnf install timeshift -y
 # PDF viewer
 sudo flatpak install flathub com.adobe.Reader -y
 
+# Okular
+sudo dnf install okular -y
+
 # Chromium
 sudo dnf install chromium -y
 
@@ -232,7 +235,7 @@ sudo flatpak install flathub com.calibre_ebook.calibre -y
 ##########
 
 # Gaming Essentials
-sudo dnf install -y dbus vulkan mangohud goverlay gamescope gamemode vkbasalt
+sudo dnf install -y dbus vulkan mangohud goverlay gamescope gamemode vkbasalt protontricks gum
 
 # Wine
 sudo dnf install wine winetricks wine-core wine-core.i686 -y
