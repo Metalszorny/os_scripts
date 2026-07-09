@@ -98,8 +98,14 @@
   # Start tuned
   services.tuned.enable = true;
 
-  # Install firefox
-  programs.firefox.enable = true;
+  # TeamViewer
+  services.teamviewer.enable = true;
+
+  # PostgreSQL
+  services.postgresql.enable = true;
+
+  # MariaDB
+  #services.mariadb.enable = true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -110,6 +116,7 @@
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     # Flatpak
     pkgs.flatpak
+    pkgs.flatpak-builder
 
     # Curl
     pkgs.curl
@@ -419,7 +426,7 @@
     pkgs.pgadmin4-desktopmode
 
     # MongoDB
-    pkgs.mongodb
+    #pkgs.mongodb
     #pkgs.mongodb-tools
     #pkgs.mongodb-compass
 
